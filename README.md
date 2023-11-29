@@ -5,7 +5,7 @@
 ### 요구 사항
 토스 iOS SDK를 설치하기 전에 최소 요구 사항을 확인하세요.
 
-- iOS 14.0 이상
+- iOS 13.0 이상
 - Swift 5.3 이상
 
 ### Swift Package Manager(SPM)로 설치하기
