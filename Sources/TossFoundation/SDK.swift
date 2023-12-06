@@ -13,7 +13,7 @@ public final class TossSDK {
     
     var enablesLogging: Bool = false
     
-    public let version: String = "1.0.0"
+    public let version: String = "1.0.3"
     public var appKey: String?
     
     private init() {}

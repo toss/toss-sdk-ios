@@ -32,14 +32,17 @@ public final class TossLoginController {
         return UIApplication.shared.canOpenURL(url)
     }
     
-    public func login(completion: @escaping ((TossLoginResult) -> Void)) {
+    public func login(
+        policy: String? = nil,
+        completion: @escaping ((TossLoginResult) -> Void)
+    ) {
         loginCompletion = { callbackURL in
             let result = callbackURL.toResult
             TossLog.shared.print(message: result.toLogMessage)
             completion(result)
         }
         
-        guard let loginURL else {
+        guard let loginURL = generateLoginURL(with: policy) else {
             TossLog.shared.print(message: "Login url is nil.")
             completion(.error(InternalError.failToGenerateURL))
             return
@@ -68,7 +71,7 @@ private extension TossLoginController {
         }
     }
     
-    var loginURL: URL? {
+    func generateLoginURL(with policy: String?) -> URL? {
         guard var components = URLComponents(string: loginURLPrefix) else { return nil }
         components.queryItems = [
             URLQueryItem(name: "clientId", value: TossSDK.shared.appKey),
@@ -78,6 +81,11 @@ private extension TossLoginController {
             URLQueryItem(name: "version", value: Constants.appVersion),
             URLQueryItem(name: "origin", value: Constants.bundleID)
         ]
+
+        if let policy {
+            components.queryItems?.append(URLQueryItem(name: "oauth_policy", value: policy))
+        }
+
         return components.url
     }
 }

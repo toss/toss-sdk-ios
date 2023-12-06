@@ -78,7 +78,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 ```
 
 ##### 로그인 요청
-토스로 로그인을 하기 위해, `login(completion:)`을 호출하세요.
+토스로 로그인을 하기 위해, `login(policy:completion:)`을 호출하세요.
 `isLoginAvailable` 변수로 토스앱 실행 가능 여부를 확인할 수 있어요. 
 > 사전 설정의 `앱 실행 허용 목록 설정`을 하지 않으면 토스앱이 설치되어 있어도, 토스앱을 실행할 수 없어요.
 
