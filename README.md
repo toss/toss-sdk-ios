@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-SceneDelegate.swif:
+SceneDelegate.swift:
 ```swift
 import TossLogin
 ...
