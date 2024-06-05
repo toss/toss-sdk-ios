@@ -50,9 +50,9 @@ public final class TossLoginController {
         UIApplication.shared.open(loginURL)
     }
     
-    public func moveToAppstore() {
-        guard let url = URL(string: TossURL.appStoreURLString) else {
-            TossLog.shared.print(message: "App store url is nil.")
+    public func moveToBridgePageForNoApp() {
+        guard let url = URL(string: TossURL.bridgeURLString) else {
+            TossLog.shared.print(message: "Bridge url is nil.")
             return
         }
         

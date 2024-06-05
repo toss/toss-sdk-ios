@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-SceneDelegate.swif:
+SceneDelegate.swift:
 ```swift
 import TossLogin
 ...
@@ -82,11 +82,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 `isLoginAvailable` 변수로 토스앱 실행 가능 여부를 확인할 수 있어요. 
 > 사전 설정의 `앱 실행 허용 목록 설정`을 하지 않으면 토스앱이 설치되어 있어도, 토스앱을 실행할 수 없어요.
 
-토스앱이 설치되어있지 않아 실행이 불가능하면, `moveToAppstore()`를 호출해 앱스토어로 이동할 수 있어요.
+토스앱이 설치되어있지 않아 실행이 불가능하면, `moveToBridgePageForNoApp()`를 호출해 앱 설치를 유도하는 웹화면으로 이동할 수 있어요.
 
 ```swift
 guard TossLoginController.shared.isLoginAvailable else {
-    TossLoginController.shared.moveToAppstore()
+    TossLoginController.shared.moveToBridgePageForNoApp()
     return
 }
 
