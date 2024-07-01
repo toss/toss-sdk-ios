@@ -51,7 +51,15 @@ public final class TossLoginController {
     }
     
     public func moveToBridgePageForNoApp() {
-        guard let url = URL(string: TossURL.bridgeURLString) else {
+        guard var components = URLComponents(string: TossURL.bridgeURLString) else {
+            TossLog.shared.print(message: "url is malformed.")
+            return
+        }
+        components.queryItems = [
+            URLQueryItem(name: "redirectUrl", value: callbackURLPrefix),
+        ]
+
+        guard let url = components.url else {
             TossLog.shared.print(message: "Bridge url is nil.")
             return
         }
